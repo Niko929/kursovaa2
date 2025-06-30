@@ -34,5 +34,21 @@ class JsonFileHendler(FileHendler):
         if not os.path.exists(self._FileHendler__filename):
             return []
         with open(self._FileHendler__filename, "r", encoding="utf-8") as f:
-            pprint(json.load(f))
+            vacancys = json.load(f)
 
+        if critery:
+            filter_vacancy = []
+            for vacancte in vacancys.get("items"):
+                for key, value in critery.items():
+                    if value in vacancte.get(key):
+                        filter_vacancy.append(vacancte)
+            return filter_vacancy
+        return vacancys
+
+    def delete_vacancy(self, vacancy_id):
+        pass
+
+
+if __name__ == "__main__":
+    file_hander = JsonFileHendler()
+    vacanes = file_hander.get_vacancy(name="Стажер")
