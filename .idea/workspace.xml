@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a6230df3-bd98-4705-a9ba-0aa015abbb0b" name="Changes" comment="main hh_api 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fileheander.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileheander.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +66,7 @@
   &quot;keyToString&quot;: {
     &quot;Python.fileheander.executor&quot;: &quot;Run&quot;,
     &quot;Python.hh_api.executor&quot;: &quot;Run&quot;,
+    &quot;Python.j.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -180,7 +182,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751301074752</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="main hh_api 2">
+      <option name="closed" value="true" />
+      <created>1751301676225</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1751301676225</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

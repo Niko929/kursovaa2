@@ -11,6 +11,8 @@ if __name__ == "__main__":
             """Выберите дейсвие
         1. Поиск вакансий по ключевому слову
         2. Получить топ N вакансий по зарплате
+        3. Получить вакансиис ключевым словом из файла
+        4. Запись вакансий в файл
         100 выход из программы"""
         )
 
@@ -46,26 +48,40 @@ if __name__ == "__main__":
                 print(f"Произошла ошибка: {e}")
         elif gert == "2":
             n = int(input("Введите N кол-во вакансий для получения: "))
-            vacanci = file_headler.get_vacancy()
-            for vacan in vacanci:
-                if vacan['salary'] == 'Зарплата не указана':
-                    print(vacan['salary'])
+            vacancy = file_headler.get_vacancy()
+            sorted_vacan =[vacan for vacan in vacancy if vacan['salary'] == 'Зарплата не указана']
+            sorted_vacan = sorted(sorted_vacan, key=lambda x: x.get("salary", 0), reverse=True)[:n]
+            if sorted_vacan:
+                for vacancys in sorted_vacan:
+                    print(
+                        f"""
+                            Навзание: {vacancys['name']},
+                            Компания: {vacancys['employer']['name']},
+                            Зарплата: {vacancys['salary']},
+                            Ссылка: {vacancys['alternate_url']},
+                            id: {vacancys['id']}
+                      """
+                    )
+            else:
+                print("Вакансия не найдена")
+        elif gert == "3":
+            keywird = input("Введите ключевое слово: ")
+            vacancy = file_headler.get_vacancy(name=keywird)
+            if vacancy:
+                for vacancys in vacancy:
+                    print(
+                        f"""
+                            Навзание: {vacancys['name']},
+                            Компания: {vacancys['employer']['name']},
+                            Зарплата: {vacancys['salary']},
+                            Ссылка: {vacancys['alternate_url']},
+                            id: {vacancys['id']}
+                      """
+                    )
+            else:
+                print("Вакансия не найдена")
+        elif gert == "4":
 
-
-            # sorted_vacan = sorted(vacanci, key=lambda x: x.get("salary", 0), reverse=True)[:n]
-            # if sorted_vacan:
-            #     for vacancy in sorted_vacan:
-            #         print(
-            #             f"""
-            #                 Навзание: {vacancy['name']},
-            #                 Компания: {vacancy['employer']['name']},
-            #                 Зарплата: {vacancy['salary']},
-            #                 Ссылка: {vacancy['alternate_url']},
-            #                 id: {vacancy['id']}
-            #           """
-            #         )
-            # else:
-            #     print("Вакансия не найдена")
         elif gert == "100":
             print("Выход из программы")
             break

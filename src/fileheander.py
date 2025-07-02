@@ -22,33 +22,38 @@ class FileHendler(abc.ABC):
 
 
 class JsonFileHendler(FileHendler):
-    def __init__(self, filename="../data/vacancies.json"):
+    def __init__(self, filename="./data/vacancies.json"):
         super().__init__(filename)
 
-    def add_vacancy(self, vacancy):
-        """Метод о сохрании информации"""
-        vacancy = self.get_vacancy()
 
     def get_vacancy(self, **critery):
         """Метод получения вакансии по указаным критериям"""
         if not os.path.exists(self._FileHendler__filename):
             return []
         with open(self._FileHendler__filename, "r", encoding="utf-8") as f:
-            vacancys = json.load(f)
+            vacancys= json.load(f)
 
         if critery:
             filter_vacancy = []
             for vacancte in vacancys.get("items"):
                 for key, value in critery.items():
                     if value in vacancte.get(key):
+                        print(vacancte)
                         filter_vacancy.append(vacancte)
             return filter_vacancy
         return vacancys
 
     def delete_vacancy(self, vacancy_id):
         pass
+    def add_vacancy(self, vacancy):
+        """Метод о сохрании информации"""
+        vacancy = self.get_vacancy()
+        if vacancy not in vacancy:
+            with open(self._FileHendler__filename, 'r+', encoding='utf-8') as file:
+                vacancies = json.load(file)
+                vacancies.append(vacancy)
 
 
 if __name__ == "__main__":
     file_hander = JsonFileHendler()
-    vacanes = file_hander.get_vacancy(name="Стажер")
+    vacanes = file_hander.get_vacancy()
