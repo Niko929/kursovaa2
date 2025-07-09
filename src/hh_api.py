@@ -16,7 +16,7 @@ class JobAPI(abc.ABC):
 
 
 class hh_API(JobAPI):
-    BASE_URL = "https://api.hh.ru/vacancies"
+    __BASE_URL = "https://api.hh.ru/vacancies"
 
     def __init__(self):
         self.__session = None
@@ -24,7 +24,7 @@ class hh_API(JobAPI):
     def _connect(self):
         """Метод для подключения API"""
         self.__session = requests.Session()
-        response = self.__session.get(self.BASE_URL)
+        response = self.__session.get(self.__BASE_URL)
         response.raise_for_status()
         return response
 
@@ -33,7 +33,7 @@ class hh_API(JobAPI):
         self._connect()
         params = {"text": keyword, "per_page": per_page, "page": page}
 
-        response = self.__session.get(self.BASE_URL, params=params)
+        response = self.__session.get(self.__BASE_URL, params=params)
         response.raise_for_status()
         vacancies = response.json().get("items", [])
 

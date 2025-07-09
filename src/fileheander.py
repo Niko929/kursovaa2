@@ -47,8 +47,8 @@ class JsonFileHendler(FileHendler):
         pass
     def add_vacancy(self, vacancy):
         """Метод о сохрании информации"""
-        vacancy = self.get_vacancy()
-        if vacancy not in vacancy:
+        vacancies = self.get_vacancy()
+        if vacancy not in vacancies:
             with open(self._FileHendler__filename, 'r+', encoding='utf-8') as file:
                 vacancies = json.load(file)
                 vacancies.append(vacancy)
